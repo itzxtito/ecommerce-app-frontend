@@ -12,9 +12,7 @@ export default function Navbar() {
           <Link to="/cart" className="hover:text-purple-400 transition">
             Cart
           </Link>
-          <Link to="/product/123" className="hover:text-purple-400 transition">
-            Product (test)
-          </Link>
+         
           <Link
             to="/products"
             className="transition duration-200 hover:text-purple-400 hover:scale-105"
