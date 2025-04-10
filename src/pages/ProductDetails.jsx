@@ -2,6 +2,13 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useCart } from '../context/CartContext';
+import { motion } from 'framer-motion';
+
+const fadeIn = {
+  initial: { opacity: 0, y: 30 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  exit: { opacity: 0, y: -20, transition: { duration: 0.3 } },
+};
 
 export default function ProductDetails() {
   const { id } = useParams();
@@ -25,19 +32,42 @@ export default function ProductDetails() {
 
   if (error) {
     return (
-      <section className="min-h-screen flex items-center justify-center text-center px-6">
+      <motion.section
+        className="min-h-screen flex items-center justify-center text-center px-6"
+        variants={fadeIn}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+      >
         <div>
           <h2 className="text-3xl font-bold text-red-600 mb-2">Product Not Found</h2>
           <p className="text-gray-600">We couldn’t find the product you’re looking for.</p>
         </div>
-      </section>
+      </motion.section>
     );
   }
 
-  if (!product) return <div className="text-center py-20">Loading...</div>;
+  if (!product)
+    return (
+      <motion.div
+        className="text-center py-20"
+        variants={fadeIn}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+      >
+        Loading...
+      </motion.div>
+    );
 
   return (
-    <section className="min-h-screen px-6 py-20">
+    <motion.section
+      className="min-h-screen px-6 py-20"
+      variants={fadeIn}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+    >
       <div className="max-w-3xl mx-auto bg-white p-6 rounded shadow">
         <img
           src={product.image || 'https://placehold.co/600x300?text=No+Image'}
@@ -59,6 +89,6 @@ export default function ProductDetails() {
           Add to Cart
         </button>
       </div>
-    </section>
+    </motion.section>
   );
 }

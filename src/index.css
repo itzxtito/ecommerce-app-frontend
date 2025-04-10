@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Global font styles */
 body {
   @apply font-sans;
+}
+
+h1, h2, h3, h4 {
+  @apply font-serif;
 }
