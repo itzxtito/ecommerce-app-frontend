@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:5001/api'; // change to your Render URL after deployment
+// Use environment variable for deployment flexibility
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 export const fetchProducts = async () => {
   try {
