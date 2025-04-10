@@ -9,9 +9,12 @@ export default function Layout() {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <ToastContainer position="top-right" autoClose={2000} />
-      <main className="flex-1">
+
+      {/* Add pt-16 to account for fixed navbar height */}
+      <main className="flex-1 pt-15">
         <Outlet />
       </main>
+
       <Footer />
     </div>
   );
