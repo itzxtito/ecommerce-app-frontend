@@ -4,6 +4,8 @@ import axios from 'axios';
 import { useCart } from '../context/CartContext';
 import { motion } from 'framer-motion';
 
+const API_BASE_URL = import.meta.env.VITE_API_URL;
+
 const fadeIn = {
   initial: { opacity: 0, y: 30 },
   animate: { opacity: 1, y: 0, transition: { duration: 0.5 } },
@@ -19,7 +21,7 @@ export default function ProductDetails() {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await axios.get(`http://localhost:5001/api/products/${id}`);
+        const res = await axios.get(`${API_BASE_URL}/products/${id}`);
         setProduct(res.data);
       } catch (err) {
         console.error('Error fetching product:', err);
